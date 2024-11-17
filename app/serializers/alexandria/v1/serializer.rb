@@ -22,7 +22,9 @@ module Alexandria
       private
 
       def data
-        { data: @serializer.serialize }.to_json
+        json_hash = { data: @serializer.serialize }
+        json_hash[:links] = @serializer.links if @serializer.respond_to?(:links)
+        json_hash.to_json
       end
 
       def collection_serializer

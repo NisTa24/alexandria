@@ -12,6 +12,10 @@ module Alexandria
         build_data
       end
 
+      def links
+        HypermediaTemplate.new.collection(presenter_class)
+      end
+
       def key
         # We hash the key using SHA1 to reduce its size
         @key ||= Digest::SHA1.hexdigest(build_key)

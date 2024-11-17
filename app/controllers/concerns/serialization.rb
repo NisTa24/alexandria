@@ -24,7 +24,7 @@ module Serialization
   def alexandria_json_v1(data, options)
     Alexandria::V1::Serializer.new(data: data,
                                    params: params,
-                                   actions: [ :fields, :embeds ],
+                                   actions: [ :fields, :embeds, :hypermedia ],
                                    options: options).to_json
   end
 

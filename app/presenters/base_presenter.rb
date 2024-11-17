@@ -26,6 +26,34 @@ class BasePresenter
     def cached?
       @cached
     end
+
+    # We need a way to enable hypermedia
+    # in specific presenters
+    def hypermedia
+      @hypermedia = true
+    end
+
+    def hypermedia?
+      @hypermedia
+    end
+
+    # Extract the model name from the presenter name
+    def model_name
+      @model_name ||= self.to_s.demodulize.underscore
+                          .split("_").first.pluralize
+    end
+
+    # Default actions available for collection resources
+    # Can be overridden in children presenters
+    def collection_methods
+      [ "GET", "POST" ]
+    end
+
+    # Default actions available for single resources
+    # Can be overridden in children presenters
+    def entity_methods
+      [ "GET", "PATCH", "DELETE" ]
+    end
   end
 
   attr_accessor :object, :params, :data
@@ -63,6 +91,10 @@ class BasePresenter
 
   def embeds
     EmbedPicker.new(self).embed
+  end
+
+  def hypermedia
+    @hypermedia ||= HypermediaBuilder.new(self).build
   end
 
   private
