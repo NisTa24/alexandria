@@ -228,6 +228,8 @@ GEM
       activesupport (>= 3.0.0)
     racc (1.8.1)
     rack (3.1.8)
+    rack-accept (0.4.5)
+      rack (>= 0.4)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
     rack-session (2.0.0)
@@ -395,6 +397,7 @@ DEPENDENCIES
   pg_search
   puma (>= 5.0)
   pundit
+  rack-accept
   rack-cors
   rails (~> 7.2.1, >= 7.2.1.2)
   rspec-rails
