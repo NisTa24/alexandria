@@ -1,0 +1,99 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.stripe.com/v1/tokens
+    body:
+      encoding: UTF-8
+      string: card[number]=4242424242424242&card[exp_month]=6&card[exp_year]=2028&card[cvc]=314
+    headers:
+      User-Agent:
+      - Stripe/v1 RubyBindings/13.1.2
+      Authorization:
+      - Bearer sk_test_51QLuDVAEoCNprxR5g21vxLWvlSrprWMfu2yRmcgvx2Fe3073TV9LQb7ZSuvmubCB5sWscFWfJpfFfGX7uYxyrtmY006AZroCCx
+      Idempotency-Key:
+      - 522d7bf1-174e-4a5a-8b44-7b903d535983
+      Stripe-Version:
+      - 2024-10-28.acacia
+      X-Stripe-Client-User-Agent:
+      - '{"bindings_version":"13.1.2","lang":"ruby","lang_version":"3.3.2 p78 (2024-05-30)","platform":"arm64-darwin23","engine":"ruby","publisher":"stripe","uname":"Darwin
+        Nishans-MBP 23.1.0 Darwin Kernel Version 23.1.0: Mon Oct  9 21:28:31 PDT 2023;
+        root:xnu-10002.41.9~6/RELEASE_ARM64_T8112 arm64","hostname":"Nishans-MBP"}'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 402
+      message: Payment Required
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 16 Nov 2024 22:29:10 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '480'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, HEAD, PUT, PATCH, POST, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Request-Id, Stripe-Manage-Version, Stripe-Should-Retry, X-Stripe-External-Auth-Required,
+        X-Stripe-Privileged-Session-Required
+      Access-Control-Max-Age:
+      - '300'
+      Cache-Control:
+      - no-cache, no-store
+      Content-Security-Policy:
+      - report-uri https://q.stripe.com/csp-report?p=v1%2Ftokens; block-all-mixed-content;
+        default-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none';
+        img-src 'self'; script-src 'self' 'report-sample'; style-src 'self'
+      Cross-Origin-Opener-Policy-Report-Only:
+      - same-origin; report-to="coop"
+      Idempotency-Key:
+      - 522d7bf1-174e-4a5a-8b44-7b903d535983
+      Original-Request:
+      - req_wCXCWWpPTcN6FM
+      Report-To:
+      - '{"group":"coop","max_age":8640,"endpoints":[{"url":"https://q.stripe.com/coop-report"}],"include_subdomains":true}'
+      Reporting-Endpoints:
+      - coop="https://q.stripe.com/coop-report"
+      Request-Id:
+      - req_wCXCWWpPTcN6FM
+      Stripe-Should-Retry:
+      - 'false'
+      Stripe-Version:
+      - 2024-10-28.acacia
+      Vary:
+      - Origin
+      X-Content-Type-Options:
+      - nosniff
+      X-Stripe-Priority-Routing-Enabled:
+      - 'true'
+      X-Stripe-Routing-Context-Priority-Tier:
+      - api-testmode
+      X-Wc:
+      - A
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "error": {
+            "message": "Sending credit card numbers directly to the Stripe API is generally unsafe. We suggest you use test tokens that map to the test card you are using, see https://stripe.com/docs/testing. To enable raw card data APIs in test mode, see https://support.stripe.com/questions/enabling-access-to-raw-card-data-apis.",
+            "request_log_url": "https://dashboard.stripe.com/test/logs/req_wCXCWWpPTcN6FM?t=1731796149",
+            "type": "invalid_request_error"
+          }
+        }
+  recorded_at: Sat, 16 Nov 2024 22:29:09 GMT
+recorded_with: VCR 6.3.1
