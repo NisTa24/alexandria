@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::API
   include Authentication
   include Authorization
+  include Serialization
 
   rescue_from QueryBuilderError, with: :builder_error
   rescue_from RepresentationBuilderError, with: :builder_error
@@ -32,15 +33,6 @@ class ApplicationController < ActionController::API
                           request: request,
                           response: response,
                           actions: actions).run
-  end
-
-  def serialize(data, options = {})
-    {
-      json: Alexandria::Serializer.new(data: data,
-                                       params: params,
-                                       actions: [ :fields, :embeds ],
-                                       options: options).to_json
-    }
   end
 
   def resource_not_found
