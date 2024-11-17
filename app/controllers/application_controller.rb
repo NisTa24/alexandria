@@ -2,6 +2,7 @@ class ApplicationController < ActionController::API
   include Authentication
   include Authorization
   include Serialization
+  include RequestParsing
 
   rescue_from QueryBuilderError, with: :builder_error
   rescue_from RepresentationBuilderError, with: :builder_error
